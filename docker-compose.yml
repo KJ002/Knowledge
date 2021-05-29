@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+
+  graphite:
+    image: graphiteapp/graphite-statsd
+    ports:
+      - "8080:8080"
+
+  bot:
+    build: .
+
